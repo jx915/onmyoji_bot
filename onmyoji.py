@@ -75,7 +75,6 @@ def init():
         elif mode == 3:
             # 双开
             fight = ExploreDual()
-
     fight.start()
 
 
@@ -88,6 +87,8 @@ def is_admin():
 
 
 def my_excepthook(exc_type, exc_value, tb):
+    
+
     msg = ' Traceback (most recent call last):\n'
     while tb:
         filename = tb.tb_frame.f_code.co_filename

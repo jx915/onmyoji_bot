@@ -29,6 +29,7 @@ class TansuoPos():
     gouliang_leftback = (0, 273), (150, 393)  # 左后狗粮位置
     gouliang_rightback = (433, 462), (567, 569)  # 右后狗粮位置
     yaoqing_comfirm = (601, 361), (746, 406)  # 继续邀请按钮
+    kaishizhandou_btn = (1048, 535), (1113, 604)   # 御魂开始战斗按钮
 
     @staticmethod
     def InitPosWithClient__():

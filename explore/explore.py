@@ -165,6 +165,18 @@ class ExploreFight(Fighter):
                      (find_pos[1]+exp_pos[1]-250))
         return fight_pos
 
+    # 查找普通怪
+    def find_normal_moster(self):
+        '''
+        寻找普通
+            return: 成功返回经验怪的攻打图标位置；失败返回-1
+        '''
+        # 查找攻击图标
+        fight_pos = self.yys.find_game_img('img/FIGHT.png')
+        if not fight_pos:
+            return -1
+        return fight_pos
+
     def find_boss(self):
         '''
         寻找BOSS
@@ -187,12 +199,17 @@ class ExploreFight(Fighter):
         '''
         while self.run:
             mood1.moodsleep()
+            # 查看是否在战斗界面
+
             # 查看是否进入探索界面
             self.yys.wait_game_img('img\\YING-BING.png')
             self.log.info('进入探索页面')
 
             # 寻找经验怪，未找到则寻找boss，再未找到则退出
-            fight_pos = self.find_exp_moster()
+            # fight_pos = self.find_exp_moster()
+
+            # 寻找普通怪
+            fight_pos = self.find_normal_moster()
             boss = False
             if fight_pos == -1:
                 if self.fight_boss_enable:
@@ -206,7 +223,8 @@ class ExploreFight(Fighter):
                     return -1
 
             # 攻击怪
-            self.click_until('怪', 'img/YING-BING.png', fight_pos, step_time=0.3, appear=False)
+            self.click_until('怪', 'img/YING-BING.png',
+                             fight_pos, step_time=0.3, appear=False)
             self.log.info('已进入战斗')
 
             # 等待式神准备
@@ -218,7 +236,7 @@ class ExploreFight(Fighter):
 
             # 点击准备，直到进入战斗
             self.click_until_knn('准备按钮', 'img/ZHUN-BEI.png', *
-                            TansuoPos.ready_btn, mood1.get1mood()/1000, False, 30)
+                                 TansuoPos.ready_btn, mood1.get1mood()/1000, False, 30)
 
             # 检查是否打完
             state = self.check_end()

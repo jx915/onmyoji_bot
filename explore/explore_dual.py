@@ -38,15 +38,20 @@ class ExploreDual():
         # 初始化司机和打手
         for hwnd in hwndlist:
             yys = GameControl(hwnd)
+            
             if yys.find_game_img('img/DUI.png', 1, (68, 242), (135, 306), thread=0.8):
                 self.driver = ExploreLeader(hwnd=hwnd, delay=True)
                 hwndlist.remove(hwnd)
                 logging.info('发现队长')
                 break
+
         self.passenger = ExplorePassenger(hwnd=hwndlist[0])
         logging.info('发现乘客')
 
+        
+
     def start(self):
+
         task1 = threading.Thread(target=self.driver.start)
         task2 = threading.Thread(target=self.passenger.start)
         task1.start()

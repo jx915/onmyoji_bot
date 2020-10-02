@@ -35,6 +35,7 @@ class MyBattle(Application):
         # 一般参数
         self.conf.set('watchdog', 'watchdog_enable',
                       str(self.watchdog_enable.get()))
+
         self.conf.set('watchdog', 'max_win_time', str(self.max_win_time.get()))
         self.conf.set('watchdog', 'max_op_time',
                       str(self.max_op_time.get()))
@@ -87,8 +88,10 @@ class MyBattle(Application):
 
         # 读取主要副本
         self.get_conf()
+         
 
-        subprocess.Popen("cmd.exe /c start Core.exe")
+        # 不执行脚本就行了，只是用来做配置项
+        # subprocess.Popen("cmd.exe /c start Core.exe")
         # os.system("onmyoji.exe")
 
     def stop_onmyoji(self):
@@ -96,6 +99,7 @@ class MyBattle(Application):
 
 
 def my_excepthook(exc_type, exc_value, tb):
+    print('出错了')
     msg = ' Traceback (most recent call last):\n'
     while tb:
         filename = tb.tb_frame.f_code.co_filename

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.0.1.1?
+#### Fixes (bugs & defects):
+* 修复双人组队（探索）不能点击挑战。
+
 ## v1.0.1.030?
 #### Fixes (bugs & defects):
 * 修复探索乘客不能自动退出。

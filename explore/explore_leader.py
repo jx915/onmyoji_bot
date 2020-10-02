@@ -41,8 +41,11 @@ class ExploreLeader(ExploreFight):
         mood2 = ut.Mood(3)
         mood3 = ut.Mood()
         scene = self.get_scene()
+
+
         if scene == 4:
             self.log.info('已进入探索，就绪')
+            
         else:
             self.log.warning('请检查是否进入探索内，退出')
             return
@@ -123,3 +126,9 @@ class ExploreLeader(ExploreFight):
 
             # 检查游戏次数
             self.check_times()
+
+            # 下一轮自动挑战
+            self.yys.wait_game_img('img/TANSUO_TIAO_ZHAN.png',self.max_win_time)
+            self.log.info('Driver: 点击开始战斗按钮')
+            self.click_until('开始战斗按钮', 'img/TANSUO_TIAO_ZHAN.png', *
+                                TansuoPos.kaishizhandou_btn, mood3.get1mood()/1000, False)
