@@ -63,6 +63,7 @@ class ExploreFight(Fighter):
             return
 
         # 狗粮经验判断
+        time.sleep(1)
         gouliang = []
         if 1 in self.gouliang:
             gouliang.append(self.yys.find_game_img(
