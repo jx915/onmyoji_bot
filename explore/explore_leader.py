@@ -128,7 +128,6 @@ class ExploreLeader(ExploreFight):
             self.check_times()
 
             # 下一轮自动挑战
-            self.yys.wait_game_img('img/TANSUO_TIAO_ZHAN.png',self.max_win_time)
             self.log.info('Driver: 点击开始战斗按钮')
             self.click_until('开始战斗按钮', 'img/TANSUO_TIAO_ZHAN.png', *
                                 TansuoPos.kaishizhandou_btn, mood3.get1mood()/1000, False)
