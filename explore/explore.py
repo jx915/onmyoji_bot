@@ -63,7 +63,7 @@ class ExploreFight(Fighter):
             return
 
         # 狗粮经验判断
-        time.sleep(1)
+        time.sleep(0.5)
         gouliang = []
         if 1 in self.gouliang:
             gouliang.append(self.yys.find_game_img(
@@ -207,10 +207,10 @@ class ExploreFight(Fighter):
             self.log.info('进入探索页面')
 
             # 寻找经验怪，未找到则寻找boss，再未找到则退出
-            # fight_pos = self.find_exp_moster()
+            fight_pos = self.find_exp_moster()
 
             # 寻找普通怪
-            fight_pos = self.find_normal_moster()
+            # fight_pos = self.find_normal_moster()
             boss = False
             if fight_pos == -1:
                 if self.fight_boss_enable:
